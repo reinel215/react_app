@@ -11,6 +11,9 @@ export default class RegisterAlert extends Component{
         return(
             <div className="alert alert-danger" role="alert">
                 Este correo ya se encuentra registrado
+                <button type="button" className="close" onClick={(e) =>{this.props.cerrarAlerta(e.target.name)    }} aria-label="Close" name="duplicateEmail">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         )
     } 

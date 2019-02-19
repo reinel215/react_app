@@ -90,7 +90,18 @@ export default class FormRegister extends Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.cerrarAlerta=this.cerrarAlerta.bind(this);
     }
+
+
+    cerrarAlerta(name){
+        this.setState({
+            mesagge: {
+                 [name]: false
+            }
+        })
+    }
+
 
     
     handleChange (e){
@@ -162,7 +173,7 @@ export default class FormRegister extends Component {
 
                 {/*put conditions to alerts for the form register*/}
                 {this.state.mesagge.registered? <RegisterAlert/>: null }
-                {this.state.mesagge.duplicateEmail? <DuplicateEmail/>: null}
+                {this.state.mesagge.duplicateEmail? <DuplicateEmail cerrarAlerta={this.cerrarAlerta} />: null}
 
 
 
