@@ -16,6 +16,10 @@ module.exports= {
 
     } ,
 
+    signIn: function(req,res,next){
+        console.log("hola mundo");
+    },
+
     muestra: function(req,res,next){
         let query="SELECT * FROM users";
         conexionABaseDeDatos.query(query,function(err,result){

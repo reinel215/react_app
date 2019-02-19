@@ -11,7 +11,7 @@ const router = require('./routes/routes.js');
 const App = express();
 
 //settings
-App.set('port', process.env.PORT || 3001);
+App.set('port', process.env.PORT || 3000);
 
 
 //middlewares

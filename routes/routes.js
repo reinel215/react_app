@@ -6,6 +6,7 @@ const controllers= require('../controllers/controllers');
 
 router.get('/muestra',controllers.muestra);
 router.post('/prueba',controllers.signUp);
+router.post('/login',controllers.signIn);
 
 
 module.exports = router;

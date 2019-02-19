@@ -172,7 +172,7 @@ export default class FormRegister extends Component {
                 <h5 className="card-title ">Crea una cuenta</h5>
 
                 {/*put conditions to alerts for the form register*/}
-                {this.state.mesagge.registered? <RegisterAlert/>: null }
+                {this.state.mesagge.registered? <RegisterAlert cerrarAlerta={this.cerrarAlerta}/>: null }
                 {this.state.mesagge.duplicateEmail? <DuplicateEmail cerrarAlerta={this.cerrarAlerta} />: null}
 
 
