@@ -6,10 +6,13 @@ const path = require('path');
 const router = require('./routes/routes.js');
 
 
+
+
 const App = express();
 
 //settings
 App.set('port', process.env.PORT || 3000);
+
 
 //middlewares
 App.use(bodyParser.urlencoded({extended: true})); 
@@ -17,7 +20,7 @@ App.use(morgan('dev'));
 App.use(bodyParser.json());
 
 //routes
-App.use('/pruebas', router);
+App.use('/', router);
 
 //static files 
 App.use(express.static(path.join(__dirname,'public')));

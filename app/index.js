@@ -1,46 +1,54 @@
 import React,{Component} from 'react';
 import ReactDom from 'react-dom';
+import NavBar from './components/NavBar'
+import FormRegister from './components/FormRegister'
 
-var styles = {
-    backgroundColor: '#043268',
-  };
+
 
 class App extends Component {
     render(){
         return(
             <div>
-                <nav className="navbar navbar-dark " style={styles}>
-                    <div className="container">
-             
-
-
-                        <a className="navbar-brand" href="#">Navbar</a>
-                            <form className="form-inline">
-                                <div className="form-row">
-                                    <div className="col-sm-6">
-                                    <label>correo</label>
-                                    </div>
-                                    <div className="col-sm-6">
-                                    <label>contraseña</label>
-                                    </div>
-                                
-                                </div>
-                                <div className="form-row">
-                                    <div className="col-sm-6">
-                                            <input type="text" className="form-control form-control-sm" placeholder="correo electronico" aria-describedby="inputGroup-sizing-sm"/>
-                                    </div>
-                                    <div className="col-sm-6">
-                                            <input type="text" className="form-control form-control-sm" placeholder="contraseña" aria-describedby="inputGroup-sizing-sm"/>
-                                    </div>
-                                    </div>
-                                </form>
-                         
-                        </div>
-                  
-                </nav>
+               <NavBar/>
+               <div className="container">
+                <FormRegister/>
+               </div>
             </div>
         )
     }
 }
 
 ReactDom.render(<App/>,document.getElementById('app'));
+
+
+/*class Form extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {inputList: []};
+        this.onAddBtnClick = this.onAddBtnClick.bind(this);
+    }
+
+    onAddBtnClick(event) {
+        const inputList = this.state.inputList;
+        this.setState({
+            inputList: inputList.concat(<input key={inputList.length} />)
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.onAddBtnClick}>Add input</button>
+                {this.state.inputList.map(function(input, index) {
+                    return input;
+                })}
+            </div>
+        );
+    }
+}
+
+
+ReactDom.render(
+    <Form />,
+    document.getElementById('app')
+);*/
