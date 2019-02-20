@@ -29,7 +29,6 @@ export default class NavBar extends Component{
     }
 
     onChange(e){
-        console.log(this.state)
         const { name, value } = e.target;
         this.setState({
           [name]: value
