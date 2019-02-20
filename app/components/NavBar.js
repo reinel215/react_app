@@ -18,6 +18,7 @@ export default class NavBar extends Component{
 
     iniciarSesion(e){
         e.preventDefault();
+        console.log('se envio la peticion')
         fetch('/login',{
             method:'POST',
             body: JSON.stringify(this.state),
@@ -26,9 +27,14 @@ export default class NavBar extends Component{
                 'Content-Type': 'application/json'
             }
         })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
     }
 
     onChange(e){
+        console.log(this.state)
         const { name, value } = e.target;
         this.setState({
           [name]: value
@@ -49,9 +55,9 @@ export default class NavBar extends Component{
                                 </div>
                                 <div className="form-group mx-2">
                                     <label htmlFor="exampleInputEmail1" className="text-light">contraseña:</label>
-                                    <input onChange={this.onChange} type="password" className="form-control form-control-sm" id="password" aria-describedby="passwordhelp" placeholder="contraseña"/>
+                                    <input onChange={this.onChange} name="password" type="password" className="form-control form-control-sm" id="password" aria-describedby="passwordhelp" placeholder="contraseña"/>
                                 </div>
-                                <button onClick={this.iniciarSesion} name="password" type="submit" className="btn btn-primary btn-sm " style={{height:'30px',marginTop:'32px',marginRight:'30px'}}>iniciar sesion</button>
+                                <button onClick={this.iniciarSesion}  type="submit" className="btn btn-primary btn-sm " style={{height:'30px',marginTop:'32px',marginRight:'30px'}}>iniciar sesion</button>
                             </div>
                             </form>
                 </div>   

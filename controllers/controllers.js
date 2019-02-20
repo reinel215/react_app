@@ -1,5 +1,4 @@
 const mysql = require('mysql');
-
 var config=require('../database');
 var conexionABaseDeDatos=mysql.createConnection(config);
 
@@ -16,9 +15,6 @@ module.exports= {
 
     } ,
 
-    signIn: function(req,res,next){
-        console.log("hola mundo");
-    },
 
     muestra: function(req,res,next){
         let query="SELECT * FROM users";

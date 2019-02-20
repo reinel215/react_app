@@ -1,17 +1,33 @@
 const express= require('express');
+const express_session= require('express-session');
+const passport=require('passport');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-
 const path = require('path');
 const router = require('./routes/routes.js');
 
 
+
+require('./passport/passport')(passport);
 
 
 const App = express();
 
 //settings
 App.set('port', process.env.PORT || 3000);
+
+//express session
+App.use(express_session({
+    secret:'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+
+//passport 
+App.use(passport.initialize());
+App.use(passport.session());
+
 
 
 //middlewares
