@@ -7,11 +7,12 @@ var conexionABaseDeDatos=mysql.createConnection(config);
 module.exports= function(passport){
 
     passport.serializeUser(function(user, done) {
-		done(null,user);
+        done(null,user);
     });
 
     
     passport.deserializeUser(function(user, done) {
+        console.log(user);
         let correo=user.correo;
 		conexionABaseDeDatos.query("select * from users where correo = "+correo,function(err,rows){
             if (err) return done(null,err);
@@ -30,7 +31,6 @@ module.exports= function(passport){
             usernameField: 'correo'
         },
         (email,password,done) =>{
-            console.log(email+" "+password)
             var buscarCorreo="SELECT * FROM users where correo = '"+email+"'";
             conexionABaseDeDatos.query(buscarCorreo,function(err,result){
                 if(err) throw err;
