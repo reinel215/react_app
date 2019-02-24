@@ -31,6 +31,11 @@ export default class NavBar extends Component{
         .then(data => {
             console.log(data);
         })
+
+        this.setState({
+            correo: '',
+            password: ''
+        })
     }
 
     onChange(e){

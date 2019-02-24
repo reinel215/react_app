@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const controllers= require('../controllers/controllers');
 const passport=require('passport');
+const path = require('path');
 
 
 
@@ -18,5 +19,6 @@ router.post('/login',function(req, res, next) {
     
   })(req, res, next);
 });
+
 
 module.exports = router;

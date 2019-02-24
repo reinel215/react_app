@@ -12,7 +12,6 @@ module.exports= function(passport){
 
     
     passport.deserializeUser(function(user, done) {
-        console.log(user);
         let correo=user.correo;
 		conexionABaseDeDatos.query("select * from users where correo = "+correo,function(err,rows){
             if (err) return done(null,err);

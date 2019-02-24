@@ -41,6 +41,10 @@ App.use('/', router);
 //static files 
 App.use(express.static(path.join(__dirname,'public')));
 
+App.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/public/index.html'));
+});
+
 
 
 App.listen(App.get('port'), function(){
