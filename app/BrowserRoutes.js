@@ -1,6 +1,7 @@
 import React from 'react'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import home from './home';
+import inside from './components/inside/inside';
 
 
 
@@ -10,7 +11,7 @@ const routes = () =>{
         <div>
             <Switch>
             <Route exact path="/" component={home} />
-            <Route path="/hola" component={hola} />
+            <Route exact path="/inside" component={inside} />
             </Switch>
         </div>
     </Router>

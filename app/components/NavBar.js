@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {Redirect} from 'react-router-dom';
 
 var styles = {
     backgroundColor: '#043268',
@@ -9,7 +10,8 @@ export default class NavBar extends Component{
         super();
         this.state={
             correo : "",
-            password : ""
+            password : "",
+            redirigir: false
         }
         this.iniciarSesion=this.iniciarSesion.bind(this);
         this.onChange=this.onChange.bind(this);
@@ -29,7 +31,12 @@ export default class NavBar extends Component{
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            if(data.success){
+                this.setState({
+                    redirigir: true
+                })
+            }
+            
         })
 
         this.setState({
@@ -39,13 +46,18 @@ export default class NavBar extends Component{
     }
 
     onChange(e){
-        console.log(this.state)
         const { name, value } = e.target;
         this.setState({
           [name]: value
         });
     }
 
+
+    renderRedirect(){
+        if(this.state.redirigir){
+            return <Redirect to='/inside' />
+        }
+    }
 
     render(){
         return(
@@ -62,6 +74,7 @@ export default class NavBar extends Component{
                                     <label htmlFor="exampleInputEmail1" className="text-light">contraseña:</label>
                                     <input onChange={this.onChange} name="password" type="password" className="form-control form-control-sm" id="password" aria-describedby="passwordhelp" placeholder="contraseña"/>
                                 </div>
+                                {this.renderRedirect()}
                                 <button onClick={this.iniciarSesion}  type="submit" className="btn btn-primary btn-sm " style={{height:'30px',marginTop:'32px',marginRight:'30px'}}>iniciar sesion</button>
                             </div>
                             </form>

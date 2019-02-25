@@ -22,5 +22,14 @@ module.exports= {
             if(err) throw err;
             console.log(result);
         });
+    },
+
+
+    InformacionDeUsuarioParaPaginaDeInicio: function(req,res,next){
+        console.log(req.session.passport);
+        res.json({
+            correo: req.session.passport.user[0].correo,
+            cedula: req.session.passport.user[0].cedula
+        })
     }
 }
